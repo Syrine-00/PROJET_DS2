@@ -1,0 +1,11 @@
+region,hotel_name,date,occupancy_rate,bookings,cancellations,revenue
+Tunis,Hotel Carthage,2024-01-01,0.75,120,10,15000
+Tunis,Hotel Carthage,2024-02-01,0.80,140,8,18000
+Sousse,Hotel Medina,2024-01-01,0.65,100,12,12000
+Sousse,Hotel Medina,2024-02-01,0.70,110,9,14000
+Hammamet,Hotel Beach,2024-01-01,0.85,160,15,20000
+Hammamet,Hotel Beach,2024-02-01,0.90,180,10,24000
+Djerba,Hotel Island,2024-01-01,0.60,90,20,10000
+Djerba,Hotel Island,2024-02-01,0.68,105,15,13000
+Monastir,Hotel Palm,2024-01-01,0.72,115,11,14500
+Monastir,Hotel Palm,2024-02-01,0.78,130,9,17000

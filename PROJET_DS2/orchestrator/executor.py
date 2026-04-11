@@ -9,7 +9,7 @@ class Executor:
 
     def execute(self, step):
         if step == "read_csv":
-            self.data = read_csv_file("data_synthetic/tourism_kpis.csv")
+            self.data = read_csv_file("data_synthetic/tourism_big.csv")
 
         elif step == "compute_kpis":
             self.data = compute_kpis(self.data)

@@ -2,8 +2,7 @@ from orchestrator.run_manager import RunManager
 from workflow import scenario1, scenario2
 import os
 
-print(os.listdir())
-print(os.listdir("data_synthetic"))
+
 
 choice = input("Choose scenario (1 or 2): ")
 

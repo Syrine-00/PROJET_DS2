@@ -1,5 +1,6 @@
 def build_task():
     return {
         "name": "tourism_csv_analysis",
-        "type": "csv"
+        "type": "csv",
+        "file": "data_synthetic/tourism_big.csv"
     }

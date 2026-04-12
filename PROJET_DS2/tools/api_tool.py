@@ -1,6 +1,6 @@
 import requests
 
-def fetch_weather():
+def fetch_weather_data():
     url = "https://api.open-meteo.com/v1/forecast?latitude=36.8&longitude=10.1&current_weather=true"
 
     response = requests.get(url)
@@ -12,5 +12,6 @@ def fetch_weather():
 
     return {
         "temperature": data["current_weather"]["temperature"],
-        "windspeed": data["current_weather"]["windspeed"]
+        "windspeed": data["current_weather"]["windspeed"],
+        "tourism_impact": "high" if data["current_weather"]["temperature"] > 25 else "medium"
     }

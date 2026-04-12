@@ -7,12 +7,14 @@ class Executor:
     def __init__(self):
         self.data = None
 
-    def execute(self, step):
+    def execute(self, step, task):
+
         if step == "read_csv":
             self.data = read_csv_file("data_synthetic/tourism_big.csv")
 
         elif step == "compute_kpis":
             self.data = compute_kpis(self.data)
+
         elif step == "api_call":
             self.data = fetch_weather()
 

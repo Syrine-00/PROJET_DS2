@@ -10,13 +10,15 @@ from orchestrator.critic import Critic
 
 class RunManager:
     def __init__(self):
-        self.run_id = str(uuid.uuid4())
+        self.run_id = f"RUN-{uuid.uuid4()}"
         self.logs = []
 
-    def log_step(self, step, status):
+    def log_step(self, step_id, step_name, event):
         self.logs.append({
-            "step": step,
-            "status": status,
+            "run_id": self.run_id,
+            "step_id": step_id,
+            "step_name": step_name,
+            "event": event,
             "timestamp": str(datetime.now())
         })
 
@@ -24,10 +26,7 @@ class RunManager:
         os.makedirs("logs", exist_ok=True)
 
         with open(f"logs/{self.run_id}.json", "w") as f:
-            json.dump({
-                "run_id": self.run_id,
-                "steps": self.logs
-            }, f, indent=4)
+            json.dump(self.logs, f, indent=4)
 
     def run(self, task):
         planner = Planner()
@@ -35,20 +34,29 @@ class RunManager:
         critic = Critic()
 
         steps = planner.plan(task)
+
         result = None
 
-        for step in steps:
+        for i, step in enumerate(steps):
+            step_id = f"STEP_{i+1:03}"
+
             try:
+                self.log_step(step_id, step, "STARTED")
+
                 result = executor.execute(step, task)
-                self.log_step(step, "success")
+
+                self.log_step(step_id, step, "SUCCESS")
+
             except Exception as e:
-                self.log_step(step, f"error: {str(e)}")
+                self.log_step(step_id, step, f"FAILED: {str(e)}")
                 self.save_logs()
                 return {"error": str(e)}
 
+        if critic.validate(result):
+            self.log_step("FINAL", "critic", "VALIDATED")
+        else:
+            self.log_step("FINAL", "critic", "INVALID")
+
         self.save_logs()
 
-        if critic.validate(result):
-            return result
-        else:
-            return {"error": "Invalid result"}
+        return result

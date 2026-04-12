@@ -1,5 +1,5 @@
 def build_task():
     return {
-        "name": "tourism_kpi_analysis",
-        "dataset": "big"  # ou "small"
+        "name": "tourism_csv_analysis",
+        "type": "csv"
     }

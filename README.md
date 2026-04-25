@@ -213,7 +213,7 @@ Each `RunManager` instance has isolated state:
 
 ## Authors
 
-**Group:** [Your group name]  
+**Group:** DOGHMAN AHMED , GUERMAZI SYRINE ,TOULGUI YASSINE , DOUS KINZA , BAGHOUDI OUMAYMA
 **Course:** Problem Solving — 2BIS  
 **Institution:** Higher Institute of Management of Tunis  
 **Academic Year:** 2025-2026
